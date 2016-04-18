@@ -31,6 +31,12 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="BarRectangleStyle" TargetType="{x:Type Rectangle}">
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Margin" Value="8,0,0,8"/>
+        </Style>
     </Window.Resources>
     <Window.DataContext>
         <local:Body/>
@@ -75,14 +81,14 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Content="Height:" Style="{DynamicResource CaptionLabelStyle}"/>
-        <Label Content="Weight:" Style="{DynamicResource CaptionLabelStyle}" Grid.Row="1"/>
-        <Label Content="BMI:" Style="{DynamicResource CaptionLabelStyle}" Grid.Row="2"/>
-        <TextBlock Grid.Column="1" Style="{DynamicResource NumberTextBlockStyle}" Text="{Binding Height.Value, StringFormat=\{0:N1\} cm}"/>
-        <TextBlock Grid.Column="1" Style="{DynamicResource NumberTextBlockStyle}" Text="{Binding Weight.Value, StringFormat=\{0:N1\} kg}" Grid.Row="1"/>
-        <TextBlock Grid.Column="1" Style="{DynamicResource NumberTextBlockStyle}" Text="{Binding Bmi.Value, StringFormat=\{0:N2\}}" Grid.Row="2"/>
-        <Slider Grid.Column="1" Style="{DynamicResource NumberSliderStyle}" Minimum="10" Maximum="250" Value="{Binding Height.Value}"/>
-        <Slider Grid.Column="1" Style="{DynamicResource NumberSliderStyle}" Minimum="10" Maximum="250" Value="{Binding Weight.Value}" Grid.Row="1"/>
-        <Rectangle x:Name="BmiRectangle" Grid.Column="1" Grid.Row="2" Width="{Binding Bmi.Value, ConverterParameter=5, Converter={StaticResource ScaleConverter}}" Fill="#FF009900" Height="24" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="8,0,0,8"/>
+        <Label Style="{DynamicResource CaptionLabelStyle}" Content="Height:"/>
+        <Label Style="{DynamicResource CaptionLabelStyle}" Content="Weight:" Grid.Row="1"/>
+        <Label Style="{DynamicResource CaptionLabelStyle}" Content="BMI:" Grid.Row="2"/>
+        <TextBlock Style="{DynamicResource NumberTextBlockStyle}" Text="{Binding Height.Value, StringFormat=\{0:N1\} cm}" Grid.Column="1"/>
+        <TextBlock Style="{DynamicResource NumberTextBlockStyle}" Text="{Binding Weight.Value, StringFormat=\{0:N1\} kg}" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock Style="{DynamicResource NumberTextBlockStyle}" Text="{Binding Bmi.Value, StringFormat=\{0:N2\}}" Grid.Column="1" Grid.Row="2"/>
+        <Slider Style="{DynamicResource NumberSliderStyle}" Minimum="10" Maximum="250" Value="{Binding Height.Value}" Grid.Column="1"/>
+        <Slider Style="{DynamicResource NumberSliderStyle}" Minimum="10" Maximum="250" Value="{Binding Weight.Value}" Grid.Column="1" Grid.Row="1"/>
+        <Rectangle x:Name="BmiRectangle" Style="{DynamicResource BarRectangleStyle}" Width="{Binding Bmi.Value, ConverterParameter=5, Converter={StaticResource ScaleConverter}}" Fill="#FF009900" Grid.Column="1" Grid.Row="2"/>
     </Grid>
 </Window>
