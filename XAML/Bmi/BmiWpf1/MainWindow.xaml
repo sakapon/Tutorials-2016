@@ -36,6 +36,36 @@
         <local:Body/>
     </Window.DataContext>
     <Grid Margin="0,0,16,20">
+        <i:Interaction.Triggers>
+            <ei:DataTrigger Binding="{Binding Bmi.Value}" Comparison="LessThan" Value="25">
+                <ei:GoToStateAction StateName="Normal"/>
+            </ei:DataTrigger>
+            <ei:DataTrigger Binding="{Binding Bmi.Value}" Comparison="GreaterThanOrEqual" Value="25">
+                <ei:GoToStateAction StateName="Warning"/>
+            </ei:DataTrigger>
+            <ei:DataTrigger Binding="{Binding Bmi.Value}" Comparison="GreaterThanOrEqual" Value="40">
+                <ei:GoToStateAction StateName="Fat"/>
+            </ei:DataTrigger>
+        </i:Interaction.Triggers>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="BmiGroup">
+                <VisualState x:Name="Normal"/>
+                <VisualState x:Name="Warning">
+                    <Storyboard>
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="BmiRectangle">
+                            <EasingColorKeyFrame KeyTime="0" Value="#FFDDDD00"/>
+                        </ColorAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Fat">
+                    <Storyboard>
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="BmiRectangle">
+                            <EasingColorKeyFrame KeyTime="0" Value="#FFEE0000"/>
+                        </ColorAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="130"/>
             <ColumnDefinition/>
