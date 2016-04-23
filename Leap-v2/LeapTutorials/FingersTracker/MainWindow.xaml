@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FingersTracker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="Fingers Tracker" Height="350" Width="525" WindowState="Maximized" FontSize="32">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <DataTemplate x:Key="PositionDataTemplate">
+            <Ellipse Fill="#FFFF9900" Height="33" Width="33" Margin="-16,-16,0,0" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+        </DataTemplate>
+        <ItemsPanelTemplate x:Key="PositionsPanelTemplate">
+            <Canvas IsItemsHost="True"/>
+        </ItemsPanelTemplate>
+    </Window.Resources>
+    <Window.DataContext>
+        <local:AppModel/>
+    </Window.DataContext>
+    <Grid Visibility="{Binding Manager.IsConnected.Value, Converter={StaticResource BooleanToVisibilityConverter}}">
+        <TextBlock Text="{Binding FrameRate.Value, StringFormat=\{0:N2\} f/s}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0"/>
+        <ItemsControl ItemsSource="{Binding StabilizedTipPositions.Value}" ItemTemplate="{DynamicResource PositionDataTemplate}" ItemsPanel="{DynamicResource PositionsPanelTemplate}"/>
     </Grid>
 </Window>
