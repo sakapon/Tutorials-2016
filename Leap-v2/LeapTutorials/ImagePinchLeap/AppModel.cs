@@ -46,7 +46,7 @@ namespace ImagePinchLeap
                 .Subscribe(_ => _.d.Subscribe(v => Translation.Value = _.p0 + 5 * ToVector2DForScreen(v)));
             PinchDrag
                 .Select(d => new { s0 = Scale.Value, d })
-                .Subscribe(_ => _.d.Subscribe(v => Scale.Value = _.s0 * (1.0 + 0.005 * v.Z)));
+                .Subscribe(_ => _.d.Subscribe(v => Scale.Value = _.s0 * Math.Pow(2, 0.02 * v.Z)));
         }
 
         // StabilizedPalmPosition and StabilizedTipPosition are lazy.
