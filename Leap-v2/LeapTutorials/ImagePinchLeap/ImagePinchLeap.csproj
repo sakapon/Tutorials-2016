@@ -135,6 +135,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="..\..\..\Images\Windows\Seattle.jpg">
+      <Link>Images\Seattle.jpg</Link>
+    </Resource>
     <Content Include="..\packages\Monsoon.Setup.Leap2.1.0.1\content\Leap.dll">
       <Link>Leap.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
