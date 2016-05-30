@@ -29,6 +29,6 @@
     </Window.DataContext>
     <Grid Visibility="{Binding Manager.IsConnected.Value, Converter={StaticResource BooleanToVisibilityConverter}}">
         <TextBlock Text="{Binding FrameRate.Value, StringFormat=\{0:N2\} f/s}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0"/>
-        <ItemsControl ItemsSource="{Binding StabilizedTipPositions.Value}" ItemTemplate="{DynamicResource PositionDataTemplate}" ItemsPanel="{DynamicResource PositionsPanelTemplate}"/>
+        <ItemsControl ItemsSource="{Binding TipPositions.Value}" ItemTemplate="{DynamicResource PositionDataTemplate}" ItemsPanel="{DynamicResource PositionsPanelTemplate}"/>
     </Grid>
 </Window>
