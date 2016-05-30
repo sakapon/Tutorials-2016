@@ -49,15 +49,16 @@ namespace ImagePinchLeap
                 .Subscribe(_ => _.d.Subscribe(v => Scale.Value = _.s0 * (1.0 + 0.005 * v.Z)));
         }
 
+        // StabilizedPalmPosition and StabilizedTipPosition are lazy.
         static Point3D GetPosition0(Leap.Hand hand)
         {
-            return ToPoint3D(hand.StabilizedPalmPosition);
+            return ToPoint3D(hand.PalmPosition);
         }
 
         static Point3D GetPosition(Leap.Hand hand)
         {
             var thumb = hand.Fingers.FirstOrDefault(f => f.Type == Leap.Finger.FingerType.TYPE_THUMB);
-            return ToPoint3D(thumb.StabilizedTipPosition);
+            return ToPoint3D(thumb.TipPosition);
         }
 
         static Point3D ToPoint3D(Leap.Vector v) => new Point3D(v.x, v.y, v.z);
