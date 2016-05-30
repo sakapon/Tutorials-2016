@@ -5,7 +5,7 @@ using System.Reactive.Linq;
 using System.Windows.Media.Media3D;
 using Reactive.Bindings;
 
-namespace FingersTracker
+namespace FingersTrackerLeap
 {
     public class AppModel
     {

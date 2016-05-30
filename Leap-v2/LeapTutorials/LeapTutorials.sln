@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FingersTracker", "FingersTracker\FingersTracker.csproj", "{BD2DD7B8-7BA8-4CF6-84F6-98E70567E28B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FingersTrackerLeap", "FingersTrackerLeap\FingersTrackerLeap.csproj", "{BD2DD7B8-7BA8-4CF6-84F6-98E70567E28B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImagePinchLeap", "ImagePinchLeap\ImagePinchLeap.csproj", "{4B502E4E-284E-40FE-98F4-2664AA147F35}"
 EndProject

@@ -4,7 +4,7 @@ using System.Reactive.Subjects;
 using Leap;
 using Reactive.Bindings;
 
-namespace FingersTracker
+namespace FingersTrackerLeap
 {
     [DebuggerDisplay("IsDisposed: {_isDisposed}")]
     public class LeapManager : IDisposable
