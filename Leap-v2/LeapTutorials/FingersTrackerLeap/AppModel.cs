@@ -5,7 +5,7 @@ using System.Reactive.Linq;
 using System.Windows.Media.Media3D;
 using Reactive.Bindings;
 
-namespace FingersTracker
+namespace FingersTrackerLeap
 {
     public class AppModel
     {
@@ -16,23 +16,23 @@ namespace FingersTracker
         public LeapManager LeapManager { get; } = new LeapManager();
 
         public ReadOnlyReactiveProperty<double> FrameRate { get; }
-        public ReadOnlyReactiveProperty<Point3D[]> StabilizedTipPositions { get; }
+        public ReadOnlyReactiveProperty<Point3D[]> TipPositions { get; }
 
         public AppModel()
         {
             FrameRate = LeapManager.FrameArrived
                 .Select(f => (double)f.CurrentFramesPerSecond)
                 .ToReadOnlyReactiveProperty();
-            StabilizedTipPositions = LeapManager.FrameArrived
-                .Select(GetStabilizedTipPositions)
+            TipPositions = LeapManager.FrameArrived
+                .Select(GetTipPositions)
                 .ToReadOnlyReactiveProperty();
         }
 
-        static Point3D[] GetStabilizedTipPositions(Leap.Frame frame) =>
+        static Point3D[] GetTipPositions(Leap.Frame frame) =>
             frame.Pointables
                 .Where(p => p.IsValid)
-                .Where(p => p.StabilizedTipPosition.IsValid())
-                .Select(p => ToScreenPoint(p.StabilizedTipPosition))
+                .Where(p => p.TipPosition.IsValid())
+                .Select(p => ToScreenPoint(p.TipPosition))
                 .ToArray();
 
         static Point3D ToScreenPoint(Leap.Vector v) =>
