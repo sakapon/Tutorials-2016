@@ -18,7 +18,7 @@ namespace ImagePinchLeap
 
         public IObservable<IObservable<Vector3D>> PinchDrag { get; }
 
-        public ReactiveProperty<Point3D> Position { get; } = new ReactiveProperty<Point3D>(new Point3D());
+        public ReactiveProperty<Vector3D> DraggedDelta { get; } = new ReactiveProperty<Vector3D>(new Vector3D());
 
         public AppModel()
         {
@@ -40,8 +40,8 @@ namespace ImagePinchLeap
                     .Select(_ => GetPosition(FrontHand.Value) - p0));
 
             PinchDrag
-                .Select(d => new { p0 = Position.Value, d })
-                .Subscribe(_ => _.d.Subscribe(v => Position.Value = _.p0 + v));
+                .Select(d => new { v0 = DraggedDelta.Value, d })
+                .Subscribe(_ => _.d.Subscribe(v => DraggedDelta.Value = _.v0 + v));
         }
 
         // StabilizedPalmPosition and StabilizedTipPosition are lazy.

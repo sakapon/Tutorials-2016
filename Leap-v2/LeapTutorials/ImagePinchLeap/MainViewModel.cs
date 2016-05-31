@@ -12,19 +12,17 @@ namespace ImagePinchLeap
     {
         public AppModel AppModel { get; } = new AppModel();
 
-        public ReactiveProperty<Point> Translation { get; } = new ReactiveProperty<Point>(new Point());
-        public ReactiveProperty<double> Scale { get; } = new ReactiveProperty<double>(1.0);
+        public ReadOnlyReactiveProperty<Vector> Translation { get; }
+        public ReadOnlyReactiveProperty<double> Scale { get; }
 
         public MainViewModel()
         {
-            AppModel.PinchDrag
-                .Select(d => new { p0 = Translation.Value, d })
-                .Subscribe(_ => _.d.Subscribe(v => Translation.Value = _.p0 + 5 * ToVector2DForScreen(v)));
-            AppModel.PinchDrag
-                .Select(d => new { s0 = Scale.Value, d })
-                .Subscribe(_ => _.d.Subscribe(v => Scale.Value = _.s0 * Math.Pow(2, 0.02 * v.Z)));
+            Translation = AppModel.DraggedDelta
+                .Select(v => 5 * new Vector(v.X, -v.Y))
+                .ToReadOnlyReactiveProperty();
+            Scale = AppModel.DraggedDelta
+                .Select(v => Math.Pow(2, 0.02 * v.Z))
+                .ToReadOnlyReactiveProperty();
         }
-
-        static Vector ToVector2DForScreen(Vector3D v) => new Vector(v.X, -v.Y);
     }
 }
