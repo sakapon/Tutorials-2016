@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Image Pinch" Height="350" Width="525" WindowState="Maximized" WindowStyle="None">
     <Window.DataContext>
-        <local:AppModel/>
+        <local:MainViewModel/>
     </Window.DataContext>
     <Canvas>
         <Rectangle Height="3600" Width="5760" StrokeThickness="0" Canvas.Left="-1920" Canvas.Top="-1200" RenderTransformOrigin="0.5,0.5">

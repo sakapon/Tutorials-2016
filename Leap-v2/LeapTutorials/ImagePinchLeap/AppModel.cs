@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
-using System.Windows;
 using System.Windows.Media.Media3D;
 using Monsoon.Setup.Leap;
 using Reactive.Bindings;
@@ -19,8 +18,7 @@ namespace ImagePinchLeap
 
         public IObservable<IObservable<Vector3D>> PinchDrag { get; }
 
-        public ReactiveProperty<Point> Translation { get; } = new ReactiveProperty<Point>(new Point());
-        public ReactiveProperty<double> Scale { get; } = new ReactiveProperty<double>(1.0);
+        public ReactiveProperty<Point3D> Position { get; } = new ReactiveProperty<Point3D>(new Point3D());
 
         public AppModel()
         {
@@ -42,11 +40,8 @@ namespace ImagePinchLeap
                     .Select(_ => GetPosition(FrontHand.Value) - p0));
 
             PinchDrag
-                .Select(d => new { p0 = Translation.Value, d })
-                .Subscribe(_ => _.d.Subscribe(v => Translation.Value = _.p0 + 5 * ToVector2DForScreen(v)));
-            PinchDrag
-                .Select(d => new { s0 = Scale.Value, d })
-                .Subscribe(_ => _.d.Subscribe(v => Scale.Value = _.s0 * Math.Pow(2, 0.02 * v.Z)));
+                .Select(d => new { p0 = Position.Value, d })
+                .Subscribe(_ => _.d.Subscribe(v => Position.Value = _.p0 + v));
         }
 
         // StabilizedPalmPosition and StabilizedTipPosition are lazy.
@@ -63,7 +58,5 @@ namespace ImagePinchLeap
 
         static Point3D ToPoint3D(Leap.Vector v) => new Point3D(v.x, v.y, v.z);
         static Vector3D ToVector3D(Leap.Vector v) => new Vector3D(v.x, v.y, v.z);
-
-        static Vector ToVector2DForScreen(Vector3D v) => new Vector(v.X, -v.Y);
     }
 }
