@@ -3,15 +3,22 @@
 The samples for tutorial.  
 チュートリアル向けのサンプルです。
 
+## XAML
+### BMI
+BMI (Body Mass Index) を計算するためのツールです。
+- [実装手順](https://github.com/sakapon/Tutorials-2016/wiki/XAML-BMI)
+
+![BMI](Images/XAML/BmiWpf.gif)
+
 ## Leap Motion
 ### Fingers Tracker
 指先の位置を追跡して表示します。  
-→[実装手順](https://github.com/sakapon/Tutorials-2016/wiki/Leap-Fingers-Tracker)
+- [実装手順](https://github.com/sakapon/Tutorials-2016/wiki/Leap-Fingers-Tracker)
 
 ![Fingers Tracker](Images/Leap-v2/FingersTrackerLeap.gif)
 
 ### Image Pinch
 画像を指でつまんで、移動およびズームします。  
-→[実装手順](https://github.com/sakapon/Tutorials-2016/wiki/Leap-Image-Pinch)
+- [実装手順](https://github.com/sakapon/Tutorials-2016/wiki/Leap-Image-Pinch)
 
 ![Image Pinch](Images/Leap-v2/ImagePinchLeap.gif)
