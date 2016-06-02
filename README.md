@@ -35,7 +35,7 @@ BMI (Body Mass Index) を計算するためのツールです。
 - Blend for Visual Studio 2015
 - C# 6.0
 - .NET Framework 4.5
-- ReactiveProperty 2.7.1 or later
+- ReactiveProperty 2.7.1
 - Kinect for Windows SDK 1.8
 - Kinect for Windows SDK 2.0
 - Leap Motion SDK 2.3.1
