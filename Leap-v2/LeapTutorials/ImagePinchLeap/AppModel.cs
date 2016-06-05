@@ -13,11 +13,9 @@ namespace ImagePinchLeap
         public LeapManager LeapManager { get; } = new LeapManager();
 
         public ReadOnlyReactiveProperty<Leap.Hand> FrontHand { get; }
-        public ReadOnlyReactiveProperty<double?> PinchStrength { get; }
-        public ReadOnlyReactiveProperty<bool?> IsPinched { get; }
+        public ReadOnlyReactiveProperty<bool> IsPinched { get; }
 
         public IObservable<IObservable<Vector3D>> PinchDrag { get; }
-
         public ReactiveProperty<Vector3D> DraggedDelta { get; } = new ReactiveProperty<Vector3D>(new Vector3D());
 
         public AppModel()
@@ -25,11 +23,8 @@ namespace ImagePinchLeap
             FrontHand = LeapManager.FrameArrived
                 .Select(f => f.Hands.Frontmost)
                 .ToReadOnlyReactiveProperty();
-            PinchStrength = FrontHand
-                .Select(h => h?.IsValid == true ? h.PinchStrength : default(double?))
-                .ToReadOnlyReactiveProperty();
-            IsPinched = PinchStrength
-                .Select(v => v.HasValue ? v.Value == 1.0 : default(bool?))
+            IsPinched = FrontHand
+                .Select(h => h?.IsValid == true && h.PinchStrength == 1.0)
                 .ToReadOnlyReactiveProperty();
 
             PinchDrag = IsPinched
@@ -38,7 +33,6 @@ namespace ImagePinchLeap
                 .Select(p0 => FrontHand
                     .TakeWhile(_ => IsPinched.Value == true)
                     .Select(_ => GetPosition(FrontHand.Value) - p0));
-
             PinchDrag
                 .Select(d => new { v0 = DraggedDelta.Value, d })
                 .Subscribe(_ => _.d.Subscribe(v => DraggedDelta.Value = _.v0 + v));
