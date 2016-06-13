@@ -17,14 +17,21 @@ BMI (Body Mass Index) を計算するためのツールです。
 
 ## Leap Motion
 ### Fingers Tracker
-指先の位置を追跡して表示します。  
+指先の位置を追跡して表示します。
 - [実装手順](https://github.com/sakapon/Tutorials-2016/wiki/Leap-Fingers-Tracker)
 - [ソースコード](Leap-v2/LeapTutorials/FingersTrackerLeap)
 
 ![Fingers Tracker](Images/Leap-v2/FingersTrackerLeap.gif)
 
+### Air Canvas
+領域 z < 0 における指先の軌跡を描画します。
+- [実装手順](https://github.com/sakapon/Tutorials-2016/wiki/Leap-Air-Canvas)
+- [ソースコード](Leap-v2/LeapTutorials/AirCanvasLeap)
+
+![Air Canvas](Images/Leap-v2/AirCanvasLeap.gif)
+
 ### Image Pinch
-2 本の指でつまんで、画像を移動またはズームします。  
+2 本の指でつまんで、画像を移動またはズームします。
 - [実装手順](https://github.com/sakapon/Tutorials-2016/wiki/Leap-Image-Pinch)
 - [ソースコード](Leap-v2/LeapTutorials/ImagePinchLeap)
 
