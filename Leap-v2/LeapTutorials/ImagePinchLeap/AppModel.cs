@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Windows.Media.Media3D;
-using Monsoon.Setup.Leap;
+using Monsoon.Reactive.Leap;
 using Reactive.Bindings;
 
 namespace ImagePinchLeap

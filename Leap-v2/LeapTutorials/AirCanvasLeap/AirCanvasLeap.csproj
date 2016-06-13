@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4B502E4E-284E-40FE-98F4-2664AA147F35}</ProjectGuid>
+    <ProjectGuid>{F3F779C4-3D57-487A-AC9C-01185367F232}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ImagePinchLeap</RootNamespace>
-    <AssemblyName>ImagePinchLeap</AssemblyName>
+    <RootNamespace>AirCanvasLeap</RootNamespace>
+    <AssemblyName>AirCanvasLeap</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -101,7 +101,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppModel.cs" />
-    <Compile Include="MainViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -136,9 +135,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="..\..\..\Images\Windows\Seattle.jpg">
-      <Link>Images\Seattle.jpg</Link>
-    </Resource>
     <Content Include="..\packages\Monsoon.Setup.Leap2.1.1.5\content\Leap.dll">
       <Link>Leap.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
