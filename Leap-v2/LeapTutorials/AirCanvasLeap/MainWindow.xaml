@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:AirCanvasLeap"
         mc:Ignorable="d"
         Title="Air Canvas" Height="350" Width="525" WindowState="Maximized">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
     <Grid>
-        <InkCanvas x:Name="TheCanvas"/>
+        <InkCanvas Strokes="{Binding Strokes}"/>
     </Grid>
 </Window>
