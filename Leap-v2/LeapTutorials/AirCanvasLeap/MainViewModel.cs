@@ -14,7 +14,7 @@ namespace AirCanvasLeap
 
         public StrokeCollection Strokes { get; } = new StrokeCollection();
 
-        Dictionary<int, Stroke> strokes = new Dictionary<int, Stroke>();
+        Dictionary<int, Stroke> activeStrokes = new Dictionary<int, Stroke>();
 
         public MainViewModel()
         {
@@ -26,22 +26,22 @@ namespace AirCanvasLeap
 
         void DrawStrokes(Dictionary<int, StylusPoint> positions)
         {
-            var idsToRemove = strokes.Keys.Except(positions.Keys).ToArray();
+            var idsToRemove = activeStrokes.Keys.Except(positions.Keys).ToArray();
             foreach (var id in idsToRemove)
             {
-                strokes.Remove(id);
+                activeStrokes.Remove(id);
             }
 
             foreach (var item in positions)
             {
-                if (strokes.ContainsKey(item.Key))
+                if (activeStrokes.ContainsKey(item.Key))
                 {
-                    strokes[item.Key].StylusPoints.Add(item.Value);
+                    activeStrokes[item.Key].StylusPoints.Add(item.Value);
                 }
                 else
                 {
                     var stroke = new Stroke(new StylusPointCollection(new[] { item.Value }));
-                    strokes[item.Key] = stroke;
+                    activeStrokes[item.Key] = stroke;
 
                     Strokes.Add(stroke);
                 }
