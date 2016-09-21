@@ -17,11 +17,14 @@ namespace SortViewerWpf
 
         public ReactiveProperty<int> MaxNumber { get; } = new ReactiveProperty<int>(AppModel.DefaultMaxNumber);
         public ReactiveProperty<bool> IsRunning { get; } = new ReactiveProperty<bool>();
+        public ReadOnlyReactiveProperty<bool> IsStopped { get; }
 
         public MainViewModel()
         {
             Numbers = AppModel.Numbers.ToObservable().ToReactiveCollection();
             ComparisonsCount = new ReactiveProperty<int>(AppModel.ComparisonsCount);
+
+            IsStopped = IsRunning.Select(b => !b).ToReadOnlyReactiveProperty();
         }
 
         public async void BubbleSort()

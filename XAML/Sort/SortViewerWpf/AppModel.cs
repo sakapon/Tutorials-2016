@@ -21,13 +21,14 @@ namespace SortViewerWpf
 
             return Task.Run(() =>
             {
-                Thread.Sleep(500);
-                Numbers.QuickSort((x1, x2) =>
+                Thread.Sleep(800);
+                Numbers.BubbleSort((x1, x2) =>
                 {
                     Thread.Sleep(ComparisonsSpan);
                     ComparisonsCount++;
                     return x1.CompareTo(x2);
                 });
+                Thread.Sleep(800);
             });
         }
     }
