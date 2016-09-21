@@ -8,17 +8,18 @@ namespace SortViewerWpf
 {
     public class AppModel
     {
+        public const int DefaultMaxNumber = 100;
         static readonly TimeSpan ComparisonsSpan = TimeSpan.FromSeconds(1 / 1000.0);
 
-        public int[] Numbers { get; private set; }
-        public int ComparisonsCount { get; private set; }
+        public int[] Numbers { get; private set; } = Enumerable.Range(1, DefaultMaxNumber).ToArray();
+        public int ComparisonsCount { get; private set; } = 0;
 
-        public void BubbleSort(int maxNumber)
+        public Task BubbleSort(int maxNumber)
         {
             Numbers = RandomHelper.ShuffleRange(1, maxNumber).ToArray();
             ComparisonsCount = 0;
 
-            Task.Run(() =>
+            return Task.Run(() =>
             {
                 Thread.Sleep(500);
                 Numbers.QuickSort((x1, x2) =>
