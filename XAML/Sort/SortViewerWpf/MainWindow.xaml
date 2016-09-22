@@ -7,7 +7,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         x:Class="SortViewerWpf.MainWindow"
         mc:Ignorable="d"
-        Title="Sort Viewer" Height="600" Width="900" FontSize="24">
+        Title="Sort Viewer" Height="600" Width="800" FontSize="24">
     <Window.Resources>
         <ItemsPanelTemplate x:Key="NumbersPanelTemplate">
             <StackPanel IsItemsHost="True" Orientation="Horizontal"/>
@@ -65,9 +65,9 @@
                 <Slider Value="{Binding Speed.Value}" Style="{DynamicResource SliderStyle}" Maximum="1000" Minimum="1" LargeChange="10" SmallChange="1"/>
             </StackPanel>
         </DockPanel>
-        <DockPanel Margin="10">
-            <TextBlock Text="{Binding ComparisonsCount.Value}" DockPanel.Dock="Bottom" Margin="10" HorizontalAlignment="Right"/>
-            <Viewbox Margin="10">
+        <DockPanel Margin="10" VerticalAlignment="Center">
+            <TextBlock Text="{Binding ComparisonsCount.Value}" Width="{Binding ActualWidth, ElementName=NumbersPanel}" DockPanel.Dock="Bottom" TextAlignment="Right" Margin="10"/>
+            <Viewbox x:Name="NumbersPanel" Margin="10">
                 <ItemsControl ItemsSource="{Binding Numbers}" ItemsPanel="{DynamicResource NumbersPanelTemplate}" ItemTemplate="{DynamicResource NumberDataTemplate}" Width="{Binding Numbers.Count}" Height="{Binding Numbers.Count}"/>
             </Viewbox>
         </DockPanel>
