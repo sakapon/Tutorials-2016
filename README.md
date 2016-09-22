@@ -21,7 +21,7 @@ BMI (Body Mass Index) を計算するためのツールです。
 ソート アルゴリズムを可視化します。  
 MVVM パターンに加えて非同期処理を利用します。上級者向けです。
 - [実装手順](https://github.com/sakapon/Tutorials-2016/wiki/XAML-Sort-Viewer)
-- [ソースコード](XAML/Sort)
+- [ソースコード](XAML/Sort/SortViewerWpf)
 
 ![Sort Viewer](Images/XAML/SortViewerWpf-300-QM.gif)
 
