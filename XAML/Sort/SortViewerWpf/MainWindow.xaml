@@ -15,16 +15,35 @@
         <DataTemplate x:Key="NumberDataTemplate">
             <Rectangle Fill="#FF003399" Width="1" Height="{Binding}" VerticalAlignment="Bottom"/>
         </DataTemplate>
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
     </Window.Resources>
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
     <DockPanel Margin="10">
         <StackPanel Width="300" DockPanel.Dock="Right" Margin="10">
-            <Button Content="Bubble Sort" IsEnabled="{Binding IsStopped.Value}" Width="200" Height="48" Margin="10">
+            <Button Content="Bubble Sort" IsEnabled="{Binding IsStopped.Value}" Style="{DynamicResource ButtonStyle}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <ei:CallMethodAction TargetObject="{Binding}" MethodName="BubbleSort"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="Quick Sort" IsEnabled="{Binding IsStopped.Value}" Style="{DynamicResource ButtonStyle}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="QuickSort"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="Merge Sort" IsEnabled="{Binding IsStopped.Value}" Style="{DynamicResource ButtonStyle}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="MergeSort"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
