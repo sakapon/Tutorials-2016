@@ -42,10 +42,10 @@ namespace SortViewerWpf
 
             var subscription = Observable.Interval(RenderingSpan)
                 .Do(_ => ComparisonsCount.Value = AppModel.ComparisonsCount)
-                .Select(_ => AppModel.Numbers.ToArray())
-                .Subscribe(ns =>
+                .Subscribe(_ =>
                 {
-                    var maxCount = Math.Min(Numbers.Count, ns.Length);
+                    var ns = AppModel.Numbers.ToArray();
+                    var maxCount = Numbers.Count;
                     for (var i = 0; i < maxCount; i++)
                         if (Numbers[i] != ns[i])
                             Numbers.SetOnScheduler(i, ns[i]);
