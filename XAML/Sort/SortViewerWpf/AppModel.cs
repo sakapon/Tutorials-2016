@@ -14,7 +14,11 @@ namespace SortViewerWpf
         public int[] Numbers { get; private set; } = Enumerable.Range(1, DefaultMaxNumber).ToArray();
         public int ComparisonsCount { get; private set; } = 0;
 
-        public Task BubbleSort(int maxNumber)
+        public Task BubbleSort(int maxNumber) => ExecuteSort(maxNumber, SortHelper.BubbleSort);
+        public Task QuickSort(int maxNumber) => ExecuteSort(maxNumber, SortHelper.QuickSort);
+        public Task MergeSort(int maxNumber) => ExecuteSort(maxNumber, SortHelper.MergeSort);
+
+        Task ExecuteSort(int maxNumber, Action<IList<int>, Func<int, int, int>> sort)
         {
             Numbers = RandomHelper.ShuffleRange(1, maxNumber).ToArray();
             ComparisonsCount = 0;
@@ -22,7 +26,7 @@ namespace SortViewerWpf
             return Task.Run(() =>
             {
                 Thread.Sleep(800);
-                Numbers.BubbleSort((x1, x2) =>
+                sort(Numbers, (x1, x2) =>
                 {
                     Thread.Sleep(ComparisonsSpan);
                     ComparisonsCount++;

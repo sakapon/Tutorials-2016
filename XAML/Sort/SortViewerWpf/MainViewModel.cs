@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Threading.Tasks;
 using Reactive.Bindings;
 
 namespace SortViewerWpf
@@ -27,7 +28,11 @@ namespace SortViewerWpf
             IsStopped = IsRunning.Select(b => !b).ToReadOnlyReactiveProperty();
         }
 
-        public async void BubbleSort()
+        public void BubbleSort() => ExecuteSort(AppModel.BubbleSort);
+        public void QuickSort() => ExecuteSort(AppModel.QuickSort);
+        public void MergeSort() => ExecuteSort(AppModel.MergeSort);
+
+        async void ExecuteSort(Func<int, Task> sort)
         {
             IsRunning.Value = true;
 
@@ -45,7 +50,7 @@ namespace SortViewerWpf
                             Numbers.SetOnScheduler(i, ns[i]);
                 });
 
-            await AppModel.BubbleSort(MaxNumber.Value);
+            await sort(MaxNumber.Value);
 
             subscription.Dispose();
             IsRunning.Value = false;
