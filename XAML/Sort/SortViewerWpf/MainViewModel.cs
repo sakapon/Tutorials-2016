@@ -32,10 +32,11 @@ namespace SortViewerWpf
         public void QuickSort() => ExecuteSort(AppModel.QuickSort);
         public void MergeSort() => ExecuteSort(AppModel.MergeSort);
 
-        async void ExecuteSort(Func<int, Task> sort)
+        async void ExecuteSort(Func<Task> sort)
         {
             IsRunning.Value = true;
 
+            AppModel.Initialize(MaxNumber.Value);
             Numbers.Clear();
             Numbers.AddRangeOnScheduler(new int[MaxNumber.Value]);
 
@@ -50,7 +51,9 @@ namespace SortViewerWpf
                             Numbers.SetOnScheduler(i, ns[i]);
                 });
 
-            await sort(MaxNumber.Value);
+            await Task.Delay(TimeSpan.FromSeconds(0.8));
+            await sort();
+            await Task.Delay(TimeSpan.FromSeconds(0.5));
 
             subscription.Dispose();
             IsRunning.Value = false;
