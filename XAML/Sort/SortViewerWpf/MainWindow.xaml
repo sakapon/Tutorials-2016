@@ -1,0 +1,75 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SortViewerWpf"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        x:Class="SortViewerWpf.MainWindow"
+        mc:Ignorable="d"
+        Title="Sort Viewer" Height="600" Width="800" FontSize="24">
+    <Window.Resources>
+        <ItemsPanelTemplate x:Key="NumbersPanelTemplate">
+            <StackPanel IsItemsHost="True" Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+        <DataTemplate x:Key="NumberDataTemplate">
+            <Rectangle Fill="#FF003399" Width="1" Height="{Binding}" VerticalAlignment="Bottom"/>
+        </DataTemplate>
+        <Style x:Key="CaptionTextStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Width" Value="240"/>
+            <Setter Property="Margin" Value="10,10,10,4"/>
+        </Style>
+        <Style x:Key="SliderStyle" TargetType="{x:Type Slider}">
+            <Setter Property="Width" Value="240"/>
+            <Setter Property="Margin" Value="10,4,10,10"/>
+            <Setter Property="IsMoveToPointEnabled" Value="True"/>
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+    </Window.Resources>
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    <DockPanel Margin="10">
+        <DockPanel DockPanel.Dock="Right" Margin="10">
+            <StackPanel DockPanel.Dock="Bottom">
+                <Button Content="Bubble Sort" IsEnabled="{Binding IsStopped.Value}" Style="{DynamicResource ButtonStyle}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="BubbleSort"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <Button Content="Quick Sort" IsEnabled="{Binding IsStopped.Value}" Style="{DynamicResource ButtonStyle}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="QuickSort"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <Button Content="Merge Sort" IsEnabled="{Binding IsStopped.Value}" Style="{DynamicResource ButtonStyle}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="MergeSort"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="{Binding MaxNumber.Value, StringFormat=Max number: \{0\}}" Style="{DynamicResource CaptionTextStyle}"/>
+                <Slider Value="{Binding MaxNumber.Value}" Style="{DynamicResource SliderStyle}" Maximum="1000" Minimum="1" LargeChange="10" SmallChange="1"/>
+                <TextBlock Text="{Binding Speed.Value, StringFormat=Interval: 1/\{0\} s}" Style="{DynamicResource CaptionTextStyle}"/>
+                <Slider Value="{Binding Speed.Value}" Style="{DynamicResource SliderStyle}" Maximum="1000" Minimum="1" LargeChange="10" SmallChange="1"/>
+            </StackPanel>
+        </DockPanel>
+        <DockPanel Margin="10" VerticalAlignment="Center">
+            <TextBlock Text="{Binding ComparisonsCount.Value}" Width="{Binding ActualWidth, ElementName=NumbersPanel}" DockPanel.Dock="Bottom" TextAlignment="Right" Margin="10"/>
+            <Viewbox x:Name="NumbersPanel" Margin="10">
+                <ItemsControl ItemsSource="{Binding Numbers}" ItemsPanel="{DynamicResource NumbersPanelTemplate}" ItemTemplate="{DynamicResource NumberDataTemplate}" Width="{Binding Numbers.Count}" Height="{Binding Numbers.Count}"/>
+            </Viewbox>
+        </DockPanel>
+    </DockPanel>
+</Window>
