@@ -8,10 +8,11 @@ namespace SortViewerWpf
     public class AppModel
     {
         public const int DefaultMaxNumber = 100;
-        static readonly TimeSpan ComparisonsSpan = TimeSpan.FromSeconds(1 / 1000.0);
+        static readonly TimeSpan DefaultComparisonsSpan = TimeSpan.FromSeconds(1 / 1000.0);
 
         public int[] Numbers { get; private set; } = Enumerable.Range(1, DefaultMaxNumber).ToArray();
         public int ComparisonsCount { get; private set; } = 0;
+        public TimeSpan ComparisonsSpan { get; set; } = DefaultComparisonsSpan;
 
         public void Initialize(int maxNumber)
         {
