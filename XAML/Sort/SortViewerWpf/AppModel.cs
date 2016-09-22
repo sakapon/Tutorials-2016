@@ -12,6 +12,7 @@ namespace SortViewerWpf
 
         public int[] Numbers { get; private set; } = Enumerable.Range(1, DefaultMaxNumber).ToArray();
         public int ComparisonsCount { get; private set; } = 0;
+
         public TimeSpan ComparisonsSpan { get; set; } = DefaultComparisonsSpan;
 
         public void Initialize(int maxNumber)

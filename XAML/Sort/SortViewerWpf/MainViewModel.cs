@@ -17,6 +17,8 @@ namespace SortViewerWpf
         public ReactiveProperty<int> ComparisonsCount { get; }
 
         public ReactiveProperty<int> MaxNumber { get; } = new ReactiveProperty<int>(AppModel.DefaultMaxNumber);
+        public ReactiveProperty<int> Speed { get; }
+
         public ReactiveProperty<bool> IsRunning { get; } = new ReactiveProperty<bool>();
         public ReadOnlyReactiveProperty<bool> IsStopped { get; }
 
@@ -24,6 +26,9 @@ namespace SortViewerWpf
         {
             Numbers = AppModel.Numbers.ToObservable().ToReactiveCollection();
             ComparisonsCount = new ReactiveProperty<int>(AppModel.ComparisonsCount);
+
+            Speed = new ReactiveProperty<int>((int)(1 / AppModel.ComparisonsSpan.TotalSeconds));
+            Speed.Subscribe(i => AppModel.ComparisonsSpan = TimeSpan.FromSeconds(1 / (double)i));
 
             IsStopped = IsRunning.Select(b => !b).ToReadOnlyReactiveProperty();
         }
