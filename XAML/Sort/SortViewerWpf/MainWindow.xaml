@@ -15,6 +15,15 @@
         <DataTemplate x:Key="NumberDataTemplate">
             <Rectangle Fill="#FF003399" Width="1" Height="{Binding}" VerticalAlignment="Bottom"/>
         </DataTemplate>
+        <Style x:Key="CaptionTextStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Width" Value="240"/>
+            <Setter Property="Margin" Value="10,10,10,4"/>
+        </Style>
+        <Style x:Key="SliderStyle" TargetType="{x:Type Slider}">
+            <Setter Property="Width" Value="240"/>
+            <Setter Property="Margin" Value="10,4,10,10"/>
+            <Setter Property="IsMoveToPointEnabled" Value="True"/>
+        </Style>
         <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Width" Value="200"/>
             <Setter Property="Height" Value="50"/>
@@ -25,7 +34,9 @@
         <local:MainViewModel/>
     </Window.DataContext>
     <DockPanel Margin="10">
-        <StackPanel Width="300" DockPanel.Dock="Right" Margin="10">
+        <StackPanel DockPanel.Dock="Right" Margin="10">
+            <TextBlock Text="{Binding MaxNumber.Value, StringFormat=Max number: \{0\}}" Style="{DynamicResource CaptionTextStyle}"/>
+            <Slider Value="{Binding MaxNumber.Value}" Style="{DynamicResource SliderStyle}" Maximum="1000" Minimum="1" LargeChange="10" SmallChange="1"/>
             <Button Content="Bubble Sort" IsEnabled="{Binding IsStopped.Value}" Style="{DynamicResource ButtonStyle}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
