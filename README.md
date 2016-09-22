@@ -7,7 +7,7 @@ Microsoft Kinect または Leap Motion Controller を利用した WPF アプリ�
 主に MVVM パターンを適用し、[ReactiveProperty](https://github.com/runceel/ReactiveProperty) を利用しています。
 
 ## XAML
-まずは前提知識として、基本的な MVVM パターンのチュートリアルを用意しています。
+前提知識として、基本的な MVVM パターンのチュートリアルを用意しています。
 
 ### BMI
 BMI (Body Mass Index) を計算するためのツールです。  
