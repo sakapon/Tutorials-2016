@@ -34,33 +34,37 @@
         <local:MainViewModel/>
     </Window.DataContext>
     <DockPanel Margin="10">
-        <StackPanel DockPanel.Dock="Right" Margin="10">
-            <TextBlock Text="{Binding MaxNumber.Value, StringFormat=Max number: \{0\}}" Style="{DynamicResource CaptionTextStyle}"/>
-            <Slider Value="{Binding MaxNumber.Value}" Style="{DynamicResource SliderStyle}" Maximum="1000" Minimum="1" LargeChange="10" SmallChange="1"/>
-            <TextBlock Text="{Binding Speed.Value, StringFormat=Interval: 1/\{0\} s}" Style="{DynamicResource CaptionTextStyle}"/>
-            <Slider Value="{Binding Speed.Value}" Style="{DynamicResource SliderStyle}" Maximum="1000" Minimum="1" LargeChange="10" SmallChange="1"/>
-            <Button Content="Bubble Sort" IsEnabled="{Binding IsStopped.Value}" Style="{DynamicResource ButtonStyle}">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="BubbleSort"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-            <Button Content="Quick Sort" IsEnabled="{Binding IsStopped.Value}" Style="{DynamicResource ButtonStyle}">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="QuickSort"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-            <Button Content="Merge Sort" IsEnabled="{Binding IsStopped.Value}" Style="{DynamicResource ButtonStyle}">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="MergeSort"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-        </StackPanel>
+        <DockPanel DockPanel.Dock="Right" Margin="10">
+            <StackPanel DockPanel.Dock="Bottom">
+                <Button Content="Bubble Sort" IsEnabled="{Binding IsStopped.Value}" Style="{DynamicResource ButtonStyle}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="BubbleSort"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <Button Content="Quick Sort" IsEnabled="{Binding IsStopped.Value}" Style="{DynamicResource ButtonStyle}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="QuickSort"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <Button Content="Merge Sort" IsEnabled="{Binding IsStopped.Value}" Style="{DynamicResource ButtonStyle}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="MergeSort"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="{Binding MaxNumber.Value, StringFormat=Max number: \{0\}}" Style="{DynamicResource CaptionTextStyle}"/>
+                <Slider Value="{Binding MaxNumber.Value}" Style="{DynamicResource SliderStyle}" Maximum="1000" Minimum="1" LargeChange="10" SmallChange="1"/>
+                <TextBlock Text="{Binding Speed.Value, StringFormat=Interval: 1/\{0\} s}" Style="{DynamicResource CaptionTextStyle}"/>
+                <Slider Value="{Binding Speed.Value}" Style="{DynamicResource SliderStyle}" Maximum="1000" Minimum="1" LargeChange="10" SmallChange="1"/>
+            </StackPanel>
+        </DockPanel>
         <DockPanel Margin="10">
             <TextBlock Text="{Binding ComparisonsCount.Value}" DockPanel.Dock="Bottom" Margin="10" HorizontalAlignment="Right"/>
             <Viewbox Margin="10">
