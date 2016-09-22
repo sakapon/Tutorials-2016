@@ -9,7 +9,7 @@ namespace SortViewerWpf
 {
     public class MainViewModel
     {
-        static readonly TimeSpan RenderingSpan = TimeSpan.FromSeconds(1 / 60.0);
+        static readonly TimeSpan RenderingInterval = TimeSpan.FromSeconds(1 / 60.0);
 
         public AppModel AppModel { get; } = new AppModel();
 
@@ -27,8 +27,8 @@ namespace SortViewerWpf
             Numbers = AppModel.Numbers.ToObservable().ToReactiveCollection();
             ComparisonsCount = new ReactiveProperty<int>(AppModel.ComparisonsCount);
 
-            Speed = new ReactiveProperty<int>((int)(1 / AppModel.ComparisonsSpan.TotalSeconds));
-            Speed.Subscribe(i => AppModel.ComparisonsSpan = TimeSpan.FromSeconds(1 / (double)i));
+            Speed = new ReactiveProperty<int>((int)(1 / AppModel.ComparisonsInterval.TotalSeconds));
+            Speed.Subscribe(i => AppModel.ComparisonsInterval = TimeSpan.FromSeconds(1 / (double)i));
 
             IsStopped = IsRunning.Select(b => !b).ToReadOnlyReactiveProperty();
         }
@@ -45,7 +45,7 @@ namespace SortViewerWpf
             Numbers.Clear();
             Numbers.AddRangeOnScheduler(new int[MaxNumber.Value]);
 
-            var subscription = Observable.Interval(RenderingSpan)
+            var subscription = Observable.Interval(RenderingInterval)
                 .Do(_ => ComparisonsCount.Value = AppModel.ComparisonsCount)
                 .Subscribe(_ =>
                 {

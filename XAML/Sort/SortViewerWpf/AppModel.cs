@@ -8,12 +8,12 @@ namespace SortViewerWpf
     public class AppModel
     {
         public const int DefaultMaxNumber = 100;
-        static readonly TimeSpan DefaultComparisonsSpan = TimeSpan.FromSeconds(1 / 1000.0);
+        static readonly TimeSpan DefaultComparisonsInterval = TimeSpan.FromSeconds(1 / 1000.0);
 
         public int[] Numbers { get; private set; } = Enumerable.Range(1, DefaultMaxNumber).ToArray();
         public int ComparisonsCount { get; private set; } = 0;
 
-        public TimeSpan ComparisonsSpan { get; set; } = DefaultComparisonsSpan;
+        public TimeSpan ComparisonsInterval { get; set; } = DefaultComparisonsInterval;
 
         public void Initialize(int maxNumber)
         {
@@ -29,7 +29,7 @@ namespace SortViewerWpf
         {
             sort(Numbers, (x1, x2) =>
             {
-                Thread.Sleep(ComparisonsSpan);
+                Thread.Sleep(ComparisonsInterval);
                 ComparisonsCount++;
                 return x1.CompareTo(x2);
             });
