@@ -7,6 +7,8 @@ Microsoft Kinect または Leap Motion Controller を利用した WPF アプリ�
 主に MVVM パターンを適用し、[ReactiveProperty](https://github.com/runceel/ReactiveProperty) を利用しています。
 
 ## XAML
+まずは前提知識として、基本的な MVVM パターンのチュートリアルを用意しています。
+
 ### BMI
 BMI (Body Mass Index) を計算するためのツールです。  
 データ バインディングおよび MVVM パターンを学習するためのチュートリアルです。
@@ -14,6 +16,14 @@ BMI (Body Mass Index) を計算するためのツールです。
 - [ソースコード](XAML/Bmi)
 
 ![BMI](Images/XAML/BmiWpf.gif)
+
+### Sort Viewer
+ソート アルゴリズムを可視化します。  
+MVVM パターンに加えて非同期処理を利用します。上級者向けです。
+- [実装手順](https://github.com/sakapon/Tutorials-2016/wiki/XAML-Sort-Viewer)
+- [ソースコード](XAML/Sort)
+
+![Sort Viewer](Images/XAML/SortViewerWpf-300-QM.gif)
 
 ## Leap Motion
 ### Fingers Tracker
