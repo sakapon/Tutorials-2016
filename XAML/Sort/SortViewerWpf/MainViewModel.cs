@@ -32,7 +32,7 @@ namespace SortViewerWpf
         public void QuickSort() => ExecuteSort(AppModel.QuickSort);
         public void MergeSort() => ExecuteSort(AppModel.MergeSort);
 
-        async void ExecuteSort(Func<Task> sort)
+        async void ExecuteSort(Action sort)
         {
             IsRunning.Value = true;
 
@@ -52,7 +52,7 @@ namespace SortViewerWpf
                 });
 
             await Task.Delay(TimeSpan.FromSeconds(0.8));
-            await sort();
+            await Task.Run(sort);
             await Task.Delay(TimeSpan.FromSeconds(0.5));
 
             subscription.Dispose();

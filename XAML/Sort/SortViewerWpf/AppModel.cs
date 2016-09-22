@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace SortViewerWpf
 {
@@ -20,19 +19,18 @@ namespace SortViewerWpf
             ComparisonsCount = 0;
         }
 
-        public Task BubbleSort() => ExecuteSort(SortHelper.BubbleSort);
-        public Task QuickSort() => ExecuteSort(SortHelper.QuickSort);
-        public Task MergeSort() => ExecuteSort(SortHelper.MergeSort);
+        public void BubbleSort() => ExecuteSort(SortHelper.BubbleSort);
+        public void QuickSort() => ExecuteSort(SortHelper.QuickSort);
+        public void MergeSort() => ExecuteSort(SortHelper.MergeSort);
 
-        Task ExecuteSort(Action<IList<int>, Func<int, int, int>> sort)
+        void ExecuteSort(Action<IList<int>, Func<int, int, int>> sort)
         {
-            return Task.Run(() =>
-                sort(Numbers, (x1, x2) =>
-                {
-                    Thread.Sleep(ComparisonsSpan);
-                    ComparisonsCount++;
-                    return x1.CompareTo(x2);
-                }));
+            sort(Numbers, (x1, x2) =>
+            {
+                Thread.Sleep(ComparisonsSpan);
+                ComparisonsCount++;
+                return x1.CompareTo(x2);
+            });
         }
     }
 
