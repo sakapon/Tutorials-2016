@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PostalCodesWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Postal Codes" Height="320" Width="480" FontSize="32">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="Postal Code:" Margin="10"/>
+        <TextBox Text="{Binding InputPostalCode.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaxLength="8" Margin="10" Grid.Column="1"/>
+        <TextBox Text="{Binding Address.Value, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" Margin="10" Grid.Row="1" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>
