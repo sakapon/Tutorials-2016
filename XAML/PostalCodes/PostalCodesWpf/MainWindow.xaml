@@ -20,6 +20,6 @@
         </Grid.RowDefinitions>
         <Label Content="Postal Code:" Margin="10"/>
         <TextBox Text="{Binding InputPostalCode.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaxLength="8" Margin="10" Grid.Column="1"/>
-        <TextBox Text="{Binding Address.Value, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" Margin="10" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <TextBox Text="{Binding AppModel.Response.Value.data.fullAddress}" IsReadOnly="True" TextWrapping="Wrap" Margin="10" Grid.Row="1" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

@@ -15,7 +15,6 @@ namespace PostalCodesWpf
         public AppModel AppModel { get; } = new AppModel();
 
         public ReactiveProperty<string> InputPostalCode { get; } = new ReactiveProperty<string>("");
-        public ReadOnlyReactiveProperty<string> Address { get; }
 
         public MainViewModel()
         {
@@ -23,10 +22,6 @@ namespace PostalCodesWpf
                 .ObserveOn(TaskPoolScheduler.Default)
                 .Select(c => PostalCodePattern.IsMatch(c) ? c : null)
                 .Subscribe(c => AppModel.PostalCode.Value = c);
-
-            Address = AppModel.Response
-                .Select(r => r != null ? r.data.fullAddress : null)
-                .ToReadOnlyReactiveProperty();
         }
     }
 }
