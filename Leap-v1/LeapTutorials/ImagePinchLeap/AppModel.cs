@@ -24,7 +24,7 @@ namespace ImagePinchLeap
                 .Select(f => f.Hands.Frontmost)
                 .ToReadOnlyReactiveProperty();
             IsPinched = FrontHand
-                .Select(h => h?.IsValid == true && h.PinchStrength == 1.0)
+                .Select(h => h?.IsValid == true && false) // Implement Pinch
                 .ToReadOnlyReactiveProperty();
 
             PinchDrag = IsPinched
@@ -39,15 +39,9 @@ namespace ImagePinchLeap
         }
 
         // StabilizedPalmPosition and StabilizedTipPosition are lazy.
-        static Point3D GetPosition0(Leap.Hand hand)
-        {
-            return ToPoint3D(hand.PalmPosition);
-        }
-
         static Point3D GetPosition(Leap.Hand hand)
         {
-            var thumb = hand.Fingers.FirstOrDefault(f => f.Type == Leap.Finger.FingerType.TYPE_THUMB);
-            return ToPoint3D(thumb.TipPosition);
+            return ToPoint3D(hand.PalmPosition);
         }
 
         static Point3D ToPoint3D(Leap.Vector v) => new Point3D(v.x, v.y, v.z);
