@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ImagePinchLeap"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Image Pinch" Height="450" Width="800" WindowState="Maximized" WindowStyle="None">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    <Canvas>
+        <Rectangle Height="3600" Width="5760" StrokeThickness="0" Canvas.Left="-1920" Canvas.Top="-1200" RenderTransformOrigin="{Binding TransformOrigin.Value}">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="{Binding Scale.Value}" ScaleY="{Binding Scale.Value}"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform X="{Binding Translation.Value.X}" Y="{Binding Translation.Value.Y}"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/ImagePinchLeap;component/Images/Seattle.jpg" TileMode="Tile" Viewport="0,0,1920,1200" ViewportUnits="Absolute"/>
+            </Rectangle.Fill>
+        </Rectangle>
+    </Canvas>
 </Window>
