@@ -28,7 +28,17 @@ namespace PostalCodesWpf
             }
         }
 
+        async public static Task<T> GetOrDefaultAsync<T>(string uri)
+        {
+            using (var http = new HttpClient())
+            {
+                var response = await http.GetAsync(uri);
+                if (!response.IsSuccessStatusCode) return default(T);
+                return await response.Content.ReadAsAsync<T>();
+            }
+        }
+
         public static T Get<T>(string uri) =>
-            GetAsync<T>(uri).GetAwaiter().GetResult();
+            GetOrDefaultAsync<T>(uri).GetAwaiter().GetResult();
     }
 }
