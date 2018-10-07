@@ -24,7 +24,9 @@ namespace ImagePinchLeap
                 .Select(f => f.Hands.Frontmost)
                 .ToReadOnlyReactiveProperty();
             IsPinched = FrontHand
-                .Select(h => h?.IsValid == true && false) // Implement Pinch
+                .Select(GetIsPinched)
+                .Where(b => b.HasValue)
+                .Select(b => b.Value)
                 .ToReadOnlyReactiveProperty();
 
             PinchDrag = IsPinched
@@ -36,6 +38,22 @@ namespace ImagePinchLeap
             PinchDrag
                 .Select(d => new { v0 = DraggedDelta.Value, d })
                 .Subscribe(_ => _.d.Subscribe(v => DraggedDelta.Value = _.v0 + v));
+        }
+
+        const double PinchRange = 25; // in millimeters
+
+        static bool? GetIsPinched(Leap.Hand hand)
+        {
+            if (!hand.IsValid) return false;
+            if (hand.Pointables.Count < 2) return null;
+
+            var pointable0 = hand.Pointables[0];
+            var pointable1 = hand.Pointables[1];
+            if (!pointable0.IsValid || !pointable1.IsValid) return null;
+
+            var p0 = ToPoint3D(pointable0.TipPosition);
+            var p1 = ToPoint3D(pointable1.TipPosition);
+            return (p1 - p0).Length < PinchRange;
         }
 
         // StabilizedPalmPosition and StabilizedTipPosition are lazy.
