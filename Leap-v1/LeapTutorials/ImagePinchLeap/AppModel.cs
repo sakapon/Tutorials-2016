@@ -44,16 +44,16 @@ namespace ImagePinchLeap
 
         static bool? GetIsPinched(Leap.Hand hand)
         {
-            if (!hand.IsValid) return false;
+            if (hand == null || !hand.IsValid) return false;
             if (hand.Pointables.Count < 2) return null;
 
             var pointable0 = hand.Pointables[0];
             var pointable1 = hand.Pointables[1];
             if (!pointable0.IsValid || !pointable1.IsValid) return null;
 
-            var p0 = ToPoint3D(pointable0.TipPosition);
-            var p1 = ToPoint3D(pointable1.TipPosition);
-            return (p1 - p0).Length < PinchRange;
+            var p0 = pointable0.TipPosition;
+            var p1 = pointable1.TipPosition;
+            return p0.DistanceTo(p1) < PinchRange;
         }
 
         // StabilizedPalmPosition and StabilizedTipPosition are lazy.
