@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImagePinchLeap", "ImagePinchLeap\ImagePinchLeap.csproj", "{C848F533-A401-4687-AA9E-FEB0A4AA5BBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FingersTrackerLeap", "FingersTrackerLeap\FingersTrackerLeap.csproj", "{77CFA1F6-013A-4A75-971C-1A70701FE5A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C848F533-A401-4687-AA9E-FEB0A4AA5BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C848F533-A401-4687-AA9E-FEB0A4AA5BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C848F533-A401-4687-AA9E-FEB0A4AA5BBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77CFA1F6-013A-4A75-971C-1A70701FE5A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77CFA1F6-013A-4A75-971C-1A70701FE5A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77CFA1F6-013A-4A75-971C-1A70701FE5A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77CFA1F6-013A-4A75-971C-1A70701FE5A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
