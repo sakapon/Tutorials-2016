@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImagePinchLeap", "ImagePinc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FingersTrackerLeap", "FingersTrackerLeap\FingersTrackerLeap.csproj", "{77CFA1F6-013A-4A75-971C-1A70701FE5A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirCanvasLeap", "AirCanvasLeap\AirCanvasLeap.csproj", "{1F044F1C-B189-4AE9-B7BB-C02A6D52BFF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{77CFA1F6-013A-4A75-971C-1A70701FE5A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77CFA1F6-013A-4A75-971C-1A70701FE5A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77CFA1F6-013A-4A75-971C-1A70701FE5A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F044F1C-B189-4AE9-B7BB-C02A6D52BFF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F044F1C-B189-4AE9-B7BB-C02A6D52BFF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F044F1C-B189-4AE9-B7BB-C02A6D52BFF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F044F1C-B189-4AE9-B7BB-C02A6D52BFF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
