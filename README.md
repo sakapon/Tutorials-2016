@@ -55,4 +55,5 @@ MVVM パターンに加えて非同期処理を利用します。上級者向け
 - ReactiveProperty 2.7.1
 - Kinect for Windows SDK 1.8
 - Kinect for Windows SDK 2.0
+- Leap Motion SDK 1.2.0
 - Leap Motion SDK 2.3.1
