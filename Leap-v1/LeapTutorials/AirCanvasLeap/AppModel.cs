@@ -25,7 +25,7 @@ namespace AirCanvasLeap
 
         static Dictionary<int, StylusPoint> ToTouchedPositions(Leap.Frame frame) =>
             frame.Pointables
-                .Where(p => p.IsValid && p.IsExtended)
+                .Where(p => p.IsValid)
                 .Where(p => p.TipPosition.IsValid() && p.TipPosition.z < 0.0)
                 .ToDictionary(p => p.Id, p => ToStylusPoint(p.TipPosition));
 
