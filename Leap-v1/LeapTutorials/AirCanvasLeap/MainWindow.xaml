@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirCanvasLeap"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Air Canvas" Height="450" Width="800" WindowState="Maximized">
     <Grid>
-        
+        <InkCanvas x:Name="TheCanvas"/>
     </Grid>
 </Window>
